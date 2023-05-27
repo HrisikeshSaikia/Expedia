@@ -1,0 +1,80 @@
+.landing1{
+    width:100%;
+    height:100%;
+    background-color:  brown;
+  }
+  .second{
+    background-color: azure;
+  }
+  .third{
+    width:100%;
+    height:600px;
+    
+  }
+
+  .car{
+    width:1200px;
+    height: 100%;
+  }
+  
+.map{
+ 
+  height:550px;
+}
+
+
+
+.con{
+  width:70%;
+  height:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.con1{
+  width:70%;
+  height:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.con2{
+  width:70%;
+  height:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review{
+  margin-left: 30%;
+  margin-right:20%;
+}
+
+
+.review1{
+  margin-left: 50%;
+  margin-right:5%;
+}
+
+.review3{
+  margin-left: 20%;
+  margin-right:50%;
+}
+
+.show{
+  width:100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items :center;
+}
+
+
+.indextitle{
+  display :flex;
+  justify-content:center;
+  font-family: 'Courier Prime', monospace;
+  font-weight: 800;
+  text-align: center;
+  position: relative;
+}

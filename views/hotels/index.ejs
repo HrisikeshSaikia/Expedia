@@ -1,0 +1,83 @@
+<%- include('../partials/header.ejs') %>
+
+<link rel="stylesheet" href="/stylesheets/main.css">
+   
+<div class="mx-5">
+    <%- include('../partials/paginate.ejs') %>
+</div>
+
+ <div class="d-sm-flex align-items-center justify-content-between pb-3 pb-sm-4 ">
+                        <h1 class=" indextitle h2 mb-sm-0 mx-auto">Find accommodation</h1>
+                    </div>
+<div class="row mx-5">
+    <div class="col-4">
+        <div class=" container-fluid mt-2 pt-2 p-0" style="padding-top: 2rem !important;">
+           
+                        <!-- Search form-->
+                        <div class="offcanvas-header d-block border-bottom pt-0 pt-lg-4 px-lg-0">
+                            <form class="form-group mb-lg-2 rounded-pill">
+                                <div class="input-group"><span class="input-group-text text-muted"><i
+                                            class="fi-search"></i></span>
+                                    <!-- <input class="form-control" type="text" placeholder="Search..."> -->
+                                    <input type="text" class="form-control" placeholder="Search..." aria-label="search"
+                                        aria-describedby="basic-addon1" id="searchInput">
+                                </div>
+                                <button class="btn btn-primary rounded-pill d-lg-inline-block d-none"
+                                    type="button" onclick="searchHotel()">Search</button>
+                                <button
+                                    class="btn btn-icon btn-primary rounded-circle flex-shrink-0 d-lg-none d-inline-flex"
+                                    type="button"><i class="fi-search mt-n2"></i></button>
+                            </form>
+                        </div>
+                        </div>
+        
+    </div>
+</div>
+<h3 class=" mb-sm-0 mx-5">List of all hotels</h3>
+
+
+<div class=" show row row-cols-xl-3 row-cols-sm-2 row-cols-1 gy-4 gx-3 gx-xxl-4 py-4 mx-5  ">
+    <!-- Items-->
+    <% let i = 0 %>
+    <% for( let hotel of hotels.docs ) { %>
+        <div class="col pb-sm-2 hotel-card">
+            <article class="position-relative">
+                <!-- <div class="position-relative mb-3">
+                    <button
+                        class="btn btn-icon btn-light-primary btn-xs text-primary rounded-circle position-absolute top-0 end-0 m-3 zindex-5"
+                        type="button" data-bs-toggle="tooltip" data-bs-placement="left"
+                        title="Add to Favorites"><i class="fi-heart"></i></button><img class="rounded-3"
+                        src="img/city-guide/catalog/01.jpg" alt="Article img">
+                </div> -->
+                <div class="position-relative mb-3">
+                    <button
+                        class="btn btn-icon btn-light-primary btn-xs text-primary rounded-circle position-absolute top-0 end-0 m-3 zindex-5"
+                        type="button" data-bs-toggle="tooltip" data-bs-placement="left"
+                        title="Add to Favorites"><i class="fi-heart"></i>
+                    </button>
+                    <% if (hotel.images.length > 0){ %>
+                        <% i = Math.floor(Math.random() * hotel.images.length )%>
+                        <img class="rounded-3" src="<%= hotel.images[i].url %>" alt="Article img" style="height: 195px;width: 428px;">
+                    <% } else { %>
+                        <img class="rounded-3" src="/Img/no-image-available-icon-6.png" alt="No image provided" style="height: 195px;width: 428px;">
+                    <% } %>
+                </div>
+                <h3 class="mb-2 fs-lg"><a class="nav-link stretched-link hotel-name"
+                        href="/hotels/<%= hotel._id %>"><%= hotel.name %></a></h3>
+                <ul class="list-inline mb-0 fs-xs">
+                    <li class="list-inline-item pe-1"><i
+                            class="fi-star-filled mt-n1 me-1 fs-base text-warning align-middle"></i><b><%= hotel.overAllRating.toFixed(2) %></b><span
+                            class="text-muted">&nbsp;(<%= hotel.reviews.length %>)</span></li>
+                    <li class="list-inline-item pe-1"><i
+                            class="fi-credit-card mt-n1 me-1 fs-base text-muted align-middle"></i><%= hotel.price %>&nbsp;$$
+                    </li>
+                    <li class="list-inline-item pe-1"><i
+                            class="fi-map-pin mt-n1 me-1 fs-base text-muted align-middle"></i><%= hotel.address %></li>
+                </ul>
+            </article>
+        </div>
+    <% } %>
+
+</div>
+<script src="/scripts/app.js"></script>
+<%- include('../partials/footer.ejs') %>
